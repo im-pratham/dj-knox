@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -35,18 +36,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        RememberMeServices rememberMeServices = rememberMeServicesObjectProvider.getIfAvailable();
-        String key = null;
-        if (rememberMeServices instanceof AbstractRememberMeServices) {
-            key = ((AbstractRememberMeServices) rememberMeServices).getKey();
-        }
-        http.csrf().disable().headers().frameOptions().sameOrigin().and().rememberMe().key(key)
-                .rememberMeServices(rememberMeServicesObjectProvider.getIfAvailable()).and().exceptionHandling()
+        http.csrf().disable().headers().frameOptions().sameOrigin().and().exceptionHandling()
                 .defaultAuthenticationEntryPointFor(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
                         AnyRequestMatcher.INSTANCE)
                 .and().x509().subjectPrincipalRegex("CN=(.*?)(?:,|$)").userDetailsService(userDetailsService());
     }
 
+    @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {
             @Override
