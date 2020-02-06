@@ -1,0 +1,50 @@
+{
+  "name": "DJ Knox",
+  "groups": [
+    {
+      "key": "flowableAdministrator",
+      "name": "Flowable Administrator"
+    },
+    {
+      "key": "flowableUser",
+      "name": "Flowable Flowable User"
+    },
+    {
+      "key": "knoxAdministrator",
+      "name": "DJ Knox Administrator"
+    },
+    {
+      "key": "knoxUser",
+      "name": "DJ Knox User"
+    }
+  ],
+  "users": [
+    {
+      "firstName": "Flowable",
+      "lastName": "Admin",
+      "login": "admin",
+      "email": "admin@knox.dj.com",
+      "language": "en",
+      "theme": "flowable",
+      "userDefinitionKey": "admin-flowable"
+    },
+    {
+      "firstName": "Knox",
+      "lastName": "Admin",
+      "login": "knox.admin",
+      "email": "knox.admin@knox.dj.com",
+      "language": "en",
+      "theme": "flowable",
+      "userDefinitionKey": "admin-knox"
+    },
+    {
+      "firstName": "Knox",
+      "lastName": "User",
+      "login": "knox.user",
+      "email": "knox.user@knox.dj.com",
+      "language": "en",
+      "theme": "flowable",
+      "userDefinitionKey": "user-knox"
+    }
+  ]
+}

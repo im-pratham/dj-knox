@@ -1,0 +1,177 @@
+[
+  {
+    "key": "admin-flowable",
+    "name": "Flowable Administration User",
+    "description": "Creates Flowable administration user.",
+    "initialUserSubType": "admin",
+    "initialState": "ACTIVE",
+    "initialSubState": "ACTIVE",
+    "forms": {
+      "init": "F01_userInitFormDefault",
+      "view": "F02_userViewFormDefault",
+      "edit": "F03_userEditFormDefault"
+    },
+    "memberGroups": [
+      "flowableUser",
+      "flowableAdministrator",
+      "knoxUser",
+      "knoxAdministrator"
+    ],
+    "lookupGroups": [
+      "knoxUser"
+    ],
+    "actionPermissions": {
+      "create": [
+        "flowableAdministrator"
+      ],
+      "edit": [
+        "flowableAdministrator"
+      ],
+      "deactivate": [
+        "flowableAdministrator"
+      ],
+      "activate": [
+        "flowableAdministrator"
+      ]
+    },
+    "initialVariables": {
+      "adminUser": true,
+      "description": "Admin"
+    },
+    "conversationFilters": [
+      "all"
+    ],
+    "contactFilters": [
+      "all",
+      "active",
+      "inactive"
+    ],
+    "allowedFeatures": [
+      "contacts",
+      "editContactAvatar",
+      "changeOwnPassword",
+      "createUser",
+      "changeContactPassword",
+      "user-mgmt",
+      "work",
+      "createWork",
+      "cases",
+      "processes",
+      "reports",
+      "reportsMetrics",
+      "tasks",
+      "templateManagement",
+      "actuators"
+    ]
+  },
+  {
+    "key": "admin-knox",
+    "name": "DJ Knox Administration User",
+    "description": "Creates a new Knox Administration user.",
+    "initialUserSubType": "admin",
+    "initialState": "ACTIVE",
+    "initialSubState": "ACTIVE",
+    "forms": {
+      "init": "F01_userInitFormDefault",
+      "view": "F02_userViewFormDefault",
+      "edit": "F03_userEditFormDefault"
+    },
+    "memberGroups": [
+      "flowableUser",
+      "flowableAdministrator",
+      "knoxUser",
+      "knoxAdministrator"
+    ],
+    "lookupGroups": [
+      "knoxUser"
+    ],
+    "actionPermissions": {
+      "create": [
+        "knoxAdministrator"
+      ],
+      "edit": [
+        "knoxAdministrator"
+      ],
+      "deactivate": [
+        "knoxAdministrator"
+      ],
+      "activate": [
+        "knoxAdministrator"
+      ]
+    },
+    "initialVariables": {
+      "adminUser": true,
+      "description": "Admin"
+    },
+    "conversationFilters": [
+      "all"
+    ],
+    "contactFilters": [
+      "all",
+      "active",
+      "inactive"
+    ],
+    "allowedFeatures": [
+      "contacts",
+      "editContactAvatar",
+      "changeOwnPassword",
+      "createUser",
+      "changeContactPassword",
+      "user-mgmt",
+      "work",
+      "createWork",
+      "cases",
+      "processes",
+      "reports",
+      "reportsMetrics",
+      "tasks",
+      "templateManagement",
+      "actuators"
+    ]
+  },
+  {
+    "key": "user-knox",
+    "name": "DJ Knox User",
+    "description": "Creates a new, non-specific user where the member groups can be freely chosen.",
+    "initialState": "ACTIVE",
+    "initialSubState": "ACTIVE",
+    "forms": {
+      "init": "F01_userInitFormDefault",
+      "view": "F02_userViewFormDefault",
+      "edit": "F03_userEditFormDefault"
+    },
+    "memberGroups": [
+      "flowableUser",
+      "knoxUser"
+    ],
+    "lookupGroups": [
+      "knoxUser"
+    ],
+    "actionPermissions": {
+      "create": [
+        "knoxAdministrator"
+      ],
+      "edit": [
+        "knoxAdministrator"
+      ],
+      "deactivate": [
+        "knoxAdministrator"
+      ],
+      "activate": [
+        "knoxAdministrator"
+      ]
+    },
+    "contactFilters": [
+      "active"
+    ],
+    "allowedFeatures": [
+      "contacts",
+      "editContactAvatar",
+      "changeOwnPassword",
+      "work",
+      "createWork",
+      "cases",
+      "tasks"
+    ]
+  }
+]

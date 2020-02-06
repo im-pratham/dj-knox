@@ -1,0 +1,126 @@
+[
+  {
+    "key": "key-user-default",
+    "name": "Default Key User",
+    "description": "Creates a new, non-specific key user where the member groups can be freely chosen.",
+    "initialState": "ACTIVE",
+    "initialSubState": "ACTIVE",
+    "forms": {
+      "init": "F01_userInitFormDefault",
+      "view": "F02_userViewFormDefault",
+      "edit": "F03_userEditFormDefault"
+    },
+    "memberGroups": [
+      "flowableUser",
+      "knoxUser"
+    ],
+    "lookupGroups": [
+      "knoxUser"
+    ],
+    "actionPermissions": {
+      "create": [
+        "knoxAdministrator"
+      ],
+      "edit": [
+        "knoxAdministrator"
+      ],
+      "deactivate": [
+        "knoxAdministrator"
+      ],
+      "activate": [
+        "knoxAdministrator"
+      ]
+    },
+    "contactFilters": [
+      "active"
+    ],
+    "allowedFeatures": [
+      "actuators",
+      "cases",
+      "changeContactPassword",
+      "changeOwnPassword",
+      "contacts",
+      "createUser",
+      "createWork",
+      "editContactAvatar",
+      "processes",
+      "reports",
+      "reportsMetrics",
+      "tasks",
+      "templateManagement",
+      "user-mmgt",
+      "websockets",
+      "work",
+      "documents"
+    ]
+  },
+  {
+    "key": "key-user-admin",
+    "name": "Administration Key User",
+    "description": "Creates a new key administration user.",
+    "initialUserSubType": "admin",
+    "initialState": "ACTIVE",
+    "initialSubState": "ACTIVE",
+    "forms": {
+      "init": "F01_userInitFormDefault",
+      "view": "F02_userViewFormDefault",
+      "edit": "F03_userEditFormDefault"
+    },
+    "memberGroups": [
+      "flowableUser",
+      "flowableAdministrator",
+      "knoxUser",
+      "knoxAdministrator"
+    ],
+    "lookupGroups": [
+      "knoxUser"
+    ],
+    "actionPermissions": {
+      "create": [
+        "knoxAdministrator"
+      ],
+      "edit": [
+        "knoxAdministrator"
+      ],
+      "deactivate": [
+        "knoxAdministrator"
+      ],
+      "activate": [
+        "knoxAdministrator"
+      ]
+    },
+    "initialVariables": {
+      "adminUser": true,
+      "description": "Admin"
+    },
+    "conversationFilters": [
+      "all"
+    ],
+    "contactFilters": [
+      "all",
+      "internal",
+      "external",
+      "inactive",
+      "clientsWithoutCa"
+    ],
+    "allowedFeatures": [
+      "actuators",
+      "cases",
+      "changeContactPassword",
+      "changeOwnPassword",
+      "contacts",
+      "createUser",
+      "createWork",
+      "editContactAvatar",
+      "processes",
+      "reports",
+      "reportsMetrics",
+      "tasks",
+      "templateManagement",
+      "user-mmgt",
+      "websockets",
+      "work",
+      "documents"
+    ]
+  }
+]
