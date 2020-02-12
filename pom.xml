@@ -19,7 +19,6 @@
     <modules>
         <module>dj-knox-work</module>
         <module>dj-knox-work-no-x509</module>
-        <module>dj-knox-platform</module>
         <module>dj-knox-control</module>
         <module>dj-knox-design</module>
     </modules>

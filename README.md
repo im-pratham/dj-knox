@@ -1,6 +1,5 @@
 # DJ Knox Flowable Work
 
-
 ## Project structure
 
 - docker
@@ -13,8 +12,6 @@
 - Parent POM
   - [dj-knox-work](https://localhost:8443)
     - Flowable Work configured to ask for a x509 client certificate.
-  - [dj-knox-platform](https://localhost:18443)
-    - Flowable Platform (headless) configured to accept HTTP-Basic authentication requests.
   - [dj-knox-design](https://localhost:8090)
     - Flowable Design configured to ask for a x509 client certificate.
   - [dj-knox-control](https://localhost:8090)
@@ -29,32 +26,30 @@
                                  |                    |
                       x509       |  Flowable Control  |
                    +------------->                    |
-            XXX    |             +-------------+------+
-           XXXXX   |                           |
-             X     +                           |            +-------------------+
-          XXXXXXX                              |            |                   |
-        XXX  X  XXX      x509                  |            |  Flowable Design  |
-             X        +------------------------------------->                   |
-x509         X                                 |            +--+----------------+
-     +-+   XXXX                                |               |
-     |    XX  XX                             HTTP-Basic auth (SSL)
-     |   XX    XX                              |               |
-     |                                         |               |
-     |                                      +--v---------------v--+
-     |                                      |                     |
-     |            +--------------+   JDBC   |  Flowable Platform  |
-     |    JDBC    |              <----------+                     |
-     |      +----->   Database   |          +-+-----------------^-+
-     |      |     |              |            |
-     |      |     +--------------+            |REST
-     |      |                                 |
-     |      |                 +---------------v-+
-  +--v------+-------+         |                 |
-  |                 |  REST   |  ElasticSearch  |
-  |  Flowable Work  +--------->                 |
-  |                 |         +-----------------+
-  +-----------------+
-
+            XXX    |             +------------------+-+
+           XXXXX   |                                |
+             X     +                                |       +-------------------+
+          XXXXXXX                                   |       |                   |
+        XXX  X  XXX      x509                       |       |  Flowable Design  |
+             X     +---------------------------+    |       |                   |
+             X                                 |    |       +--+----------------+
+           XXXX                                |    |          |
+          XX  XX                               |    |          |
+         XX    XX                              |    | x509 (admin certificate)
+                                               |    |          |
+                                            +--v----v----------v--+
+                                            |                     |
+                  +--------------+   JDBC   |  Flowable Work      |
+                  |              <----------+                     |
+                  |   Database   |          +-+-----------------^-+
+                  |              |            |
+                  +--------------+            |REST
+                                              |
+                              +---------------v-+
+                              |                 |
+                              |  ElasticSearch  |
+                              |                 |
+                              +-----------------+
 ```
 
 ## Starting the project
@@ -79,9 +74,8 @@ This is the order to start the applications:
 
 1. start the database and elasticsearch with docker-compose
 2. start dj-knox-work
-3. start dj-knox-platform
-4. start dj-knox-design and dj-knox-control
-5. Optionally, start dj-knox-work-no-x509
+3. start dj-knox-design and dj-knox-control
+4. Optionally, start dj-knox-work-no-x509
 
 ### Data
 
