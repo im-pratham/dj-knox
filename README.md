@@ -12,11 +12,11 @@
 - Parent POM
   - [dj-knox-work](https://localhost:8443)
     - Flowable Work configured to ask for a x509 client certificate.
-  - [dj-knox-design](https://localhost:8090)
+  - [dj-knox-design](https://localhost:18091)
     - Flowable Design configured to ask for a x509 client certificate.
-  - [dj-knox-control](https://localhost:8090)
+  - [dj-knox-control](https://localhost:18092)
     - Flowable Control configured to ask for a x509 client certificate.
-  - [dj-knox-work-no-x509](https://localhost:8090)
+  - [dj-knox-work-no-x509](http://localhost:8090)
     - Flowable Work configured with the standard form login security. This module is used to test a "normal" Flowable Work installation along with the x509 versions and compare functionality, access to features, etc.
 
 ## Architechture
