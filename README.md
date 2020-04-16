@@ -1,5 +1,9 @@
 # DJ Knox Flowable Work
 
+## DISCLAIMER
+
+This project was only intended to show how to use x509 certificate Spring security configuration. It is only a PoC.
+
 ## Project structure
 
 - docker
@@ -56,10 +60,15 @@
 
 This project uses public key certificates to authenticate the users.
 
-First you must put the ca certificate in your JVM cacerts file to trust the certificate authority.
+First you must trust the self-signed certificates. A quick'n'dirty way to do this is to put the ca and the localhost certificates in your JVM cacerts file.
 
 ```bash
+Java 8:
 keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -alias DesatranquesCA -file ca.crt
+
+Java 11:
+keytool -import -trustcacerts -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -alias DesatranquesCA -file ca.crt
+
 ```
 
 Also, you need to import the certificate authority certificate file (ca.crt) and the client certificate file (admin.p12) in your browser. You must set that you trust the CA to indentify websites.
