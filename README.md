@@ -1,6 +1,6 @@
 # DJ Knox Flowable Work
 
-## DISCLAIMER
+## DISCLAIMER
 
 This project was only intended to show how to use x509 certificate Spring security configuration. It is only a PoC.
 
