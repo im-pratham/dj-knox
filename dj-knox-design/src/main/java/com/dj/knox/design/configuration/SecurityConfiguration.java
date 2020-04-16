@@ -6,10 +6,12 @@ import java.util.stream.Stream;
 
 import com.flowable.design.domain.editor.ModelerUser;
 import com.flowable.design.repository.editor.ModelerUserRepository;
+import com.flowable.design.security.ModelerUserDetailsService;
 
 import org.assertj.core.util.Strings;
 import org.flowable.ui.common.security.FlowableAppUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -36,32 +38,14 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     final protected ModelerUserRepository userRepository;
+    final protected UserDetailsService modelerUserDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().headers().frameOptions().sameOrigin().and().exceptionHandling()
                 .defaultAuthenticationEntryPointFor(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED),
                         AnyRequestMatcher.INSTANCE)
-                .and().x509().subjectPrincipalRegex("CN=(.*?)(?:,|$)").userDetailsService(userDetailsService());
-    }
-
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) {
-                String grantedAuthoritiesStringList = "access-admin,access-control,admin";
-                List<GrantedAuthority> grantedAuthorities = Stream.of(grantedAuthoritiesStringList.split(","))
-                        .collect(Collectors.toList()).stream().map((authority) -> {
-                            return new SimpleGrantedAuthority(authority);
-                        }).collect(Collectors.toList());
-                if (!Strings.isNullOrEmpty(username)) {
-                    ModelerUser user = userRepository.getUserByUsername(username);
-                    return new FlowableAppUser(user, username, grantedAuthorities);
-                } else {
-                    throw new UsernameNotFoundException("The user '" + username + "' is not registered.");
-                }
-            }
-        };
+                .and().x509().subjectPrincipalRegex("CN=(.*?)(?:,|$)").userDetailsService(modelerUserDetailsService);
     }
 
 }

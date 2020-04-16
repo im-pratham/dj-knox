@@ -10,6 +10,7 @@ import java.security.cert.CertificateException;
 
 import javax.net.ssl.SSLContext;
 
+import com.flowable.design.security.ModelerUserDetailsService;
 import com.flowable.design.service.http.HttpClientProvider;
 
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -52,4 +53,5 @@ public class FlowableDesignApplication extends SpringBootServletInitializer {
 
         };
     }
+
 }
